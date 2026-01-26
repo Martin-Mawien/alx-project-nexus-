@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+- Updated Django from 4.2.9 to 4.2.26 to fix multiple vulnerabilities:
+  - SQL injection in column aliases
+  - SQL injection in HasKey(lhs, rhs) on Oracle
+  - Denial-of-service in intcomma template filter
+  - SQL injection via _connector keyword argument
+  - Denial-of-service in HttpResponseRedirect on Windows
+- Updated Gunicorn from 21.2.0 to 22.0.0 to fix HTTP request/response smuggling
+- Updated Pillow from 10.2.0 to 10.3.0 to fix buffer overflow vulnerability
+
 ### Added
 - Comprehensive README.md with professional structure and badges
 - CONTRIBUTING.md with detailed contribution guidelines
@@ -20,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 - Makefile with common development commands
 - Testing configuration (pytest.ini, pyproject.toml, setup.cfg)
+- QUICK_START.md for new users
 
 ### Changed
 - Enhanced repository documentation structure

@@ -4,7 +4,7 @@
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/Martin-Mawien/alx-project-nexus-/ci.yml?branch=main)
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
-![Django Version](https://img.shields.io/badge/django-4.2%2B-green)
+![Django Version](https://img.shields.io/badge/django-4.2.26-green)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Code Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
 
@@ -82,7 +82,7 @@ The **Job Board Backend API** is a scalable, production-ready Django REST Framew
 ## 🛠️ Technologies
 
 ### Backend Framework
-- **Django 4.2+** - High-level Python web framework
+- **Django 4.2.26** - High-level Python web framework with security patches
 - **Django REST Framework 3.14+** - Powerful toolkit for building Web APIs
 - **Python 3.10+** - Modern Python with type hints and performance improvements
 
