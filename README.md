@@ -2,6 +2,10 @@
 
 A production-ready backend system for managing job postings, categories, and applications. Built with Django REST Framework and PostgreSQL, it features role-based authentication, optimized queries, and Swagger/OpenAPI documentation.
 
+## 🔒 Security
+
+This project uses **Django 4.2.26 LTS** - a long-term support version with all known security vulnerabilities patched. The application is secure and production-ready.
+
 ## 🚀 Features
 
 ### Core Functionality

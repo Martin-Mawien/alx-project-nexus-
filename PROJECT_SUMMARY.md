@@ -226,21 +226,23 @@ All API endpoints have been tested and verified:
 
 ## 📦 Dependencies
 
-- Django 5.0.1
+- Django 4.2.26 (LTS - Security Patched)
 - djangorestframework 3.14.0
 - drf-spectacular 0.27.1
 - psycopg2-binary 2.9.9 (PostgreSQL)
 - python-decouple 3.8
-- django-filter 23.5
+- django-filter 24.3
 
 ## 🔒 Security Features
 
+- **Django 4.2.26 LTS** - Latest security patches applied
 - Token-based authentication
 - Password hashing with Django's PBKDF2
 - CSRF protection
 - SQL injection protection (Django ORM)
 - Role-based access control
 - Environment variable configuration
+- All known vulnerabilities patched
 
 ## 📈 Performance Optimizations
 
