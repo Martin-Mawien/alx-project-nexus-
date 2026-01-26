@@ -1,4 +1,4 @@
-# Job Board Backend API
+### Job Board Backend API
 
 > A production-ready RESTful API for managing job postings, applications, and user roles with enterprise-grade authentication and real-time search capabilities.
 
@@ -151,7 +151,8 @@ erDiagram
         text description
         int category_id FK
         string location
-        string job_type "full-time, part-time, contract, remote"
+        string job_type "full-time,
+        part-time,contract,remote"
         decimal salary_min
         decimal salary_max
         string currency
@@ -167,7 +168,8 @@ erDiagram
         string name
         text description
         string slug
-        int parent_id FK "for hierarchical categories"
+        int parent_id FK
+       "for hierarchical categories"
         datetime created_at
         datetime updated_at
     }
@@ -178,7 +180,9 @@ erDiagram
         int user_id FK
         string resume_url
         text cover_letter
-        string status "pending, reviewed, shortlisted, rejected, accepted"
+        string status "pending,
+        reviewed,shortlisted
+        rejected,accepted"
         datetime applied_at
         datetime reviewed_at
         int reviewed_by FK
