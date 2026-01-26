@@ -152,6 +152,8 @@ class Job(models.Model):
 
     @property
     def applications_count(self):
+        if hasattr(self, '_applications_count'):
+            return self._applications_count
         return self.applications.count()
 
 

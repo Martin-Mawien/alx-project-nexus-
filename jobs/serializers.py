@@ -24,7 +24,7 @@ class JobListSerializer(serializers.ModelSerializer):
     """
     category_name = serializers.CharField(source='category.name', read_only=True)
     employer_name = serializers.SerializerMethodField(read_only=True)
-    applications_count = serializers.IntegerField(read_only=True)
+    applications_count = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Job
@@ -40,6 +40,11 @@ class JobListSerializer(serializers.ModelSerializer):
     def get_employer_name(self, obj):
         return obj.employer.company_name or obj.employer.get_full_name() or obj.employer.username
 
+    def get_applications_count(self, obj):
+        if hasattr(obj, '_applications_count'):
+            return obj._applications_count
+        return obj.applications_count
+
 
 class JobDetailSerializer(serializers.ModelSerializer):
     """
@@ -52,7 +57,7 @@ class JobDetailSerializer(serializers.ModelSerializer):
         write_only=True
     )
     employer = UserSerializer(read_only=True)
-    applications_count = serializers.IntegerField(read_only=True)
+    applications_count = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Job
@@ -64,6 +69,11 @@ class JobDetailSerializer(serializers.ModelSerializer):
             'deadline', 'applications_count', 'created_at', 'updated_at'
         ]
         read_only_fields = ['id', 'employer', 'created_at', 'updated_at', 'applications_count']
+
+    def get_applications_count(self, obj):
+        if hasattr(obj, '_applications_count'):
+            return obj._applications_count
+        return obj.applications_count
 
     def create(self, validated_data):
         # Set the employer from the request user

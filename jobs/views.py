@@ -66,9 +66,13 @@ class JobViewSet(viewsets.ModelViewSet):
             'employer', 'category'
         ).prefetch_related(
             'applications'
-        ).annotate(
-            applications_count=Count('applications')
         )
+        
+        # Add annotation for list view only
+        if self.action == 'list':
+            queryset = queryset.annotate(
+                _applications_count=Count('applications')
+            )
         
         # Filter by employer if requested
         employer_id = self.request.query_params.get('employer', None)
