@@ -20,65 +20,6 @@ Job Board Backend   A production‑ready backend system for managing job posting
 
 ----
 
-# Clone repo
-git clone https://github.com/your-username/job-board-backend.git
-cd job-board-backend
-
-# Setup environment
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# Run migrations
-python manage.py migrate
-
-# Start server
-python manage.py runserver
-
-----
-
-pytest --disable-warnings --maxfail=1 --cov=.
-
-----
-
-🚀 Deployment
-Dockerized app deployed on Render.
-
-CI/CD pipeline via GitHub Actions.
-
-Secrets managed securely (RENDER_API_KEY, RENDER_SERVICE_ID).
-
-📖 Documentation
-Swagger/OpenAPI at /api/docs.
-
-README includes ERD diagram + setup guide.
-
-🤝 Contribution Guidelines
-Follow Git commit conventions (feat:, fix:, perf:, docs:).
-
-Use pull requests for new features.
-
-Ensure tests pass before merging.
-
-✅ Evaluation Criteria
-Functionality: CRUD + role‑based access.
-
-Code Quality: Modular, Django best practices.
-
-Performance: Indexed queries, efficient search.
-
-Documentation: Swagger + README + ERD.
-
-Deployment: CI/CD pipeline with Render.
-
-✨ Features
-  - Job Management: CRUD APIs for job postings with category and location filters.
-  - Role Base Access: Admins manage jobs/categories; users apply for jobs.
-  - Optimized search: Indexed queries for fast filtering.
-  - Applications: users apply, admins review/update status.
-  - API Docs: Swagger hosted at /api/docs.
-----
-
 📊 Database Schema (ERD)
 erDiagram
     
@@ -105,7 +46,7 @@ erDiagram
         int posted_by FK
         datetime created_at
         
-    }
+     }
 
     CATEGORY {
         int id PK
@@ -170,4 +111,63 @@ GET /applications/{id} → Retrieve application
 PUT /applications/{id} → Update status (Admin only)
 
 DELETE /applications/{id} → Withdraw application (User only)
+
+# Clone repo
+git clone https://github.com/your-username/job-board-backend.git
+cd job-board-backend
+
+# Setup environment
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate
+
+# Start server
+python manage.py runserver
+
+----
+
+pytest --disable-warnings --maxfail=1 --cov=.
+
+----
+
+🚀 Deployment
+Dockerized app deployed on Render.
+
+CI/CD pipeline via GitHub Actions.
+
+Secrets managed securely (RENDER_API_KEY, RENDER_SERVICE_ID).
+
+📖 Documentation
+Swagger/OpenAPI at /api/docs.
+
+README includes ERD diagram + setup guide.
+
+🤝 Contribution Guidelines
+Follow Git commit conventions (feat:, fix:, perf:, docs:).
+
+Use pull requests for new features.
+
+Ensure tests pass before merging.
+
+✅ Evaluation Criteria
+Functionality: CRUD + role‑based access.
+
+Code Quality: Modular, Django best practices.
+
+Performance: Indexed queries, efficient search.
+
+Documentation: Swagger + README + ERD.
+
+Deployment: CI/CD pipeline with Render.
+
+✨ Features
+  - Job Management: CRUD APIs for job postings with category and location filters.
+  - Role Base Access: Admins manage jobs/categories; users apply for jobs.
+  - Optimized search: Indexed queries for fast filtering.
+  - Applications: users apply, admins review/update status.
+  - API Docs: Swagger hosted at /api/docs.
+----
 
