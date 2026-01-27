@@ -152,8 +152,7 @@ erDiagram
         text description
         int category_id FK
         string location
-        string job_type "full-time,
-        part-time,contract,remote"
+        string job_type "full-time, part-time,contract,remote"
         decimal salary_min
         decimal salary_max
         string currency
