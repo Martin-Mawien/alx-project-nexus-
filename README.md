@@ -180,9 +180,7 @@ erDiagram
         int user_id FK
         string resume_url
         text cover_letter
-        string status "pending,
-reviewed,shortlisted
-        rejected,accepted"
+        string status "pending, reviewed,shortlisted,rejected,accepted"
         datetime applied_at
         datetime reviewed_at
         int reviewed_by FK
