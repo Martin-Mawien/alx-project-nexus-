@@ -123,7 +123,8 @@ The **Job Board Backend API** is a scalable, production-ready Django REST Framew
 
 ## 📊 Database Schema (ERD)
 
-```erDiagram
+```mermaid
+erDiagram
     USER {
         int id PK
         string username
