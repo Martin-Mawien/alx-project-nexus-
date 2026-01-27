@@ -169,8 +169,7 @@ erDiagram
         string name
         text description
         string slug
-        int parent_id FK
-       "for hierarchical categories"
+        int parent_id FK "for hierarchical categories"
         datetime created_at
         datetime updated_at
     }
@@ -182,7 +181,7 @@ erDiagram
         string resume_url
         text cover_letter
         string status "pending,
-        reviewed,shortlisted
+reviewed,shortlisted
         rejected,accepted"
         datetime applied_at
         datetime reviewed_at
