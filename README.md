@@ -21,6 +21,7 @@ Job Board Backend   A production‑ready backend system for managing job posting
 ----
 
 ✨ Features
+----
   - Job Management: CRUD APIs for job postings with category and location filters.
   - Role Base Access: Admins manage jobs/categories; users apply for jobs.
   - Optimized search: Indexed queries for fast filtering.
@@ -29,6 +30,7 @@ Job Board Backend   A production‑ready backend system for managing job posting
 ----
 
 📊 Database Schema (ERD)
+----
 erDiagram
     
     USER {
