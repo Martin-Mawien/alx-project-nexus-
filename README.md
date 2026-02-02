@@ -330,7 +330,7 @@ ON CONFLICT (name) DO NOTHING;
 ## 📁 Project Structure
 
 ```
-job-board-backend/
+alx-project-nexus/
 ├── apps/
 │   ├── users/
 │   │   ├── migrations/
