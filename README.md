@@ -1,9 +1,11 @@
-### Job Board Backend API
+### alx-project-nexus
+Job Board Backend A production‑ready backend system for managing job postings, categories, and applications. Built with Django REST Framework and PostgreSQL, it features role‑based authentication, optimized queries, and Swagger/OpenAPI documentation.
+----
 
 > A production-ready RESTful API for managing job postings, applications, and user roles with enterprise-grade authentication and real-time search capabilities.
 ----
 
-![Build Status](https://img.shield.io/github/actions/workflow/status/Martin-Mawien/alx-project-nexus-/ci.yml?branch=main)
+![Build Status](https://img.shield.io/badge/github/actions/workflow/status/Martin-Mawien/alx-project-nexus-/ci.yml?branch=main)
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Django Version](https://img.shields.io/badge/django-4.2.26-green)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -676,7 +678,7 @@ This application is configured for deployment on:
 3. **Create Web Service**
    - Connect your GitHub repository
    - Configure build and start commands:
-     - Build Command: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate`
+    - Build Command: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate`
      - Start Command: `gunicorn config.wsgi:application`
 
 4. **Set Environment Variables**
@@ -788,7 +790,7 @@ A comprehensive Postman collection is available in the `docs/postman/` directory
 2. **Configure Environment**
    - Import `docs/postman/Job_Board_API.postman_environment.json`
    - Update variables:
-     - `base_url`: Your API base URL
+    - `base_url`: Your API base URL
      - `access_token`: JWT access token (obtained from login)
 
 3. **Authentication Flow**
