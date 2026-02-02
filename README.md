@@ -1,12 +1,13 @@
-# Job Board Backend API
-
-> A production-ready RESTful API for managing job postings, applications, and user roles with enterprise-grade authentication and real-time search capabilities.
+### alx-project-nexus
+> A production-ready RESTful API backend designed to manage job postings, categories, applications, and user roles with enterprise-grade authentication and real-time search.
+Built on Django REST Framework and PostgreSQL, it delivers secure role‑based access, optimized queries performance, and comprehensive Swagger/OpenAPI documentation for sealess integration.
+----
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/Martin-Mawien/alx-project-nexus-/ci.yml?branch=main)
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Django Version](https://img.shields.io/badge/django-4.2.26-green)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Code Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
+![Code-Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
 
 ---
 
@@ -26,10 +27,36 @@
 - [License](#-license)
 
 ---
-
 ## 🎯 Overview
+---
+## ALX Project Nexus
+A production-ready RESTful API backend designed to manage job postings, categories, applications, and user roles with enterprise-grade authentication and real-time search.
+Built on Django REST Framework and PostgreSQL, it delivers secure role‑based access, optimized queries performance, and comprehensive Swagger/OpenAPI documentation for sealess integration.
 
-The **Job Board Backend API** is a scalable, production-ready Django REST Framework application designed for managing job postings, categories, and applications. It implements role-based access control (RBAC), JWT authentication, and optimized database queries to support high-traffic job portals.
+## ✨ Festures
+- Role - baased authentication (JWT in production)
+- Job postings with category classification
+- Applications with resume upload and workflow status
+- Real - time search and filtering
+- Swagger/OpenAPI documentation
+- CI/CD pipeline with Github Actions
+- Dockerized deployment with PostgreSQL
+
+## Tech Stack
+- **Backend:** Django REST framework
+- **Database:** PostgreSQL
+- **Auth:** JWT (production), session (develiopment)
+- **Deployment:** Docker, Gunicorn, Render
+- **CI/CD:** Github Actions
+- **Docs:** Swagger, Redoc, Postman
+
+## SETUP
+```bash
+git clone https://github.com/Martin-Mawien/alx-project-nexus-.git
+cd alx-project-nexus
+cp .env,example .env
+docker-compose up --build
+```
 
 ### Key Highlights
 
@@ -40,10 +67,7 @@ The **Job Board Backend API** is a scalable, production-ready Django REST Framew
 - ✅ **Production Ready** - Docker containerization, CI/CD pipeline, and cloud deployment
 - ✅ **API Documentation** - Interactive Swagger/OpenAPI documentation
 
----
-
 ## ✨ Features
-
 ### Core Functionality
 
 - **Job Management**
@@ -77,10 +101,7 @@ The **Job Board Backend API** is a scalable, production-ready Django REST Framew
 - **CORS Support** - Configured for frontend integration
 - **Caching** - Redis caching for frequently accessed data
 
----
-
 ## 🛠️ Technologies
-
 ### Backend Framework
 - **Django 4.2.26** - High-level Python web framework with security patches
 - **Django REST Framework 3.14+** - Powerful toolkit for building Web APIs
@@ -124,76 +145,140 @@ The **Job Board Backend API** is a scalable, production-ready Django REST Framew
 
 ```mermaid
 erDiagram
-    USER {
-        int id PK
-        string username
-        string email
-        string password_hash
-        string first_name
-        string last_name
-        int role_id FK
-        boolean is_active
-        boolean email_verified
-        datetime created_at
-        datetime updated_at
-    }
-    
-    ROLE {
-        int id PK
-        string name "admin, employer, job_seeker"
-        string description
-        datetime created_at
-    }
-
-    JOB {
-        int id PK
-        string title
-        text description
-        int category_id FK
-        string location
-        string job_type "full-time, part-time, contract, remote"
-        decimal salary_min
-        decimal salary_max
-        string currency
-        int posted_by FK
-        string status "active, closed, draft"
-        datetime deadline
-        datetime created_at
-        datetime updated_at
-    }
-
-    CATEGORY {
-        int id PK
-        string name
-        text description
-        string slug
-        int parent_id FK "for hierarchical categories"
-        datetime created_at
-        datetime updated_at
-    }
-
-    APPLICATION {
-        int id PK
-        int job_id FK
-        int user_id FK
-        string resume_url
-        text cover_letter
-        string status "pending, reviewed, shortlisted, rejected, accepted"
-        datetime applied_at
-        datetime reviewed_at
-        int reviewed_by FK
-        text admin_notes
-    }
-    
-    USER ||--o{ APPLICATION : "submits"
-    USER ||--o{ JOB : "posts"
-    JOB ||--o{ APPLICATION : "receives"
-    CATEGORY ||--o{ JOB : "categorizes"
-    CATEGORY ||--o{ CATEGORY : "has_subcategories"
-    ROLE ||--o{ USER : "defines"
-    USER ||--o{ APPLICATION : "reviews"
+   ROLE {
+   int id PK
+   string name
+   string description
+   timestamp created_at
+}
 ```
+----
 
+## PostgreSQL Schema
+
+```sql
+CREATE TABLE role (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMPTZ NOT NULL
+DEFAULT NOW(),
+    CONSTRAINT role_name_check
+        CHECK (name IN ('admin',
+'employer', 'job_seeker'))
+);
+
+/* ============================================================
+   USER TABLE
+   ============================================================ */
+CREATE TABLE app_user (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(150) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    role_id INTEGER NOT NULL REFERENCES role(id) ON DELETE RESTRICT,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+/* ============================================================
+   CATEGORY TABLE
+   ============================================================ */
+CREATE TABLE category (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL UNIQUE,
+    description TEXT,
+    slug VARCHAR(150) NOT NULL UNIQUE,
+    parent_id INTEGER REFERENCES category(id) ON DELETE SET NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+/* ============================================================
+   JOB TABLE
+   ============================================================ */
+CREATE TABLE job (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT NOT NULL,
+    category_id INTEGER NOT NULL REFERENCES category(id) ON DELETE RESTRICT,
+    location VARCHAR(200) NOT NULL,
+    job_type VARCHAR(50) NOT NULL,
+    salary_min NUMERIC(12,2),
+    salary_max NUMERIC(12,2),
+    currency VARCHAR(10),
+    posted_by INTEGER NOT NULL REFERENCES app_user(id) ON DELETE CASCADE,
+    status VARCHAR(50) NOT NULL,
+    deadline TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    CONSTRAINT job_type_check CHECK (job_type IN ('full-time', 'part-time', 'contract', 'remote')),
+    CONSTRAINT job_status_check CHECK (status IN ('active', 'closed', 'draft'))
+);
+
+/* ============================================================
+   APPLICATION TABLE
+   ============================================================ */
+CREATE TABLE application (
+    id SERIAL PRIMARY KEY,
+    job_id INTEGER NOT NULL REFERENCES job(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES app_user(id) ON DELETE CASCADE,
+    resume_url VARCHAR(500) NOT NULL,
+    cover_letter TEXT,
+    status VARCHAR(50) NOT NULL,
+    applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    reviewed_at TIMESTAMPTZ,
+    reviewed_by INTEGER REFERENCES app_user(id) ON DELETE SET NULL,
+    admin_notes TEXT,
+    CONSTRAINT application_status_check CHECK (
+        status IN ('pending', 'reviewed', 'shortlisted', 'rejected', 'accepted')
+    )
+);
+
+/* ============================================================
+   INDEXES FOR PERFORMANCE
+   ============================================================ */
+
+-- USER
+CREATE INDEX idx_app_user_email ON app_user (email);
+CREATE INDEX idx_app_user_username ON app_user (username);
+CREATE INDEX idx_app_user_role_id ON app_user (role_id);
+
+-- ROLE
+CREATE INDEX idx_role_name ON role (name);
+
+-- CATEGORY
+CREATE INDEX idx_category_parent_id ON category (parent_id);
+CREATE INDEX idx_category_slug ON category (slug);
+
+-- JOB
+CREATE INDEX idx_job_category_id ON job (category_id);
+CREATE INDEX idx_job_posted_by ON job (posted_by);
+CREATE INDEX idx_job_status ON job (status);
+CREATE INDEX idx_job_job_type ON job (job_type);
+CREATE INDEX idx_job_deadline ON job (deadline);
+
+-- APPLICATION
+CREATE INDEX idx_application_job_id ON application (job_id);
+CREATE INDEX idx_application_user_id ON application (user_id);
+CREATE INDEX idx_application_status ON application (status);
+CREATE INDEX idx_application_reviewed_by ON application (reviewed_by);
+
+/* ============================================================
+   SEED DATA FOR ROLES
+   ============================================================ */
+INSERT INTO role (name, description)
+VALUES
+    ('admin', 'Platform administrator with full access'),
+    ('employer', 'Employer who can post and manage jobs'),
+    ('job_seeker', 'User who can search and apply for jobs')
+ON CONFLICT (name) DO NOTHING;
+
+```
 ---
 
 ## 📂 API Endpoints
@@ -265,7 +350,7 @@ erDiagram
 ## 📁 Project Structure
 
 ```
-job-board-backend/
+alx-project-nexus/
 ├── apps/
 │   ├── users/
 │   │   ├── migrations/
@@ -611,7 +696,7 @@ This application is configured for deployment on:
 3. **Create Web Service**
    - Connect your GitHub repository
    - Configure build and start commands:
-     - Build Command: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate`
+    - Build Command: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate`
      - Start Command: `gunicorn config.wsgi:application`
 
 4. **Set Environment Variables**
@@ -723,7 +808,7 @@ A comprehensive Postman collection is available in the `docs/postman/` directory
 2. **Configure Environment**
    - Import `docs/postman/Job_Board_API.postman_environment.json`
    - Update variables:
-     - `base_url`: Your API base URL
+    - `base_url`: Your API base URL
      - `access_token`: JWT access token (obtained from login)
 
 3. **Authentication Flow**
