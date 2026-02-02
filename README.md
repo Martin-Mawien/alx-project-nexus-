@@ -47,7 +47,7 @@ Built on Django REST Framework and PostgreSQL, it delivers secure role‑based a
 - **Database:** PostgreSQL
 - **Auth:** JWT (production), session (develiopment)
 - **Deployment:** Docker, Gunicorn, Render
-- **CI/CD Github Actions
+- **CI/CD:** Github Actions
 - **Docs:** Swagger, Redoc, Postman
 
 ## SETUP
