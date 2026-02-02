@@ -52,7 +52,7 @@ Built on Django REST Framework and PostgreSQL, it delivers secure role‑based a
 
 ## SETUP
 ```bash
-git clone https//github.com/Martin-Mawien/alx-project-nexus.git
+git clone https://github.com/Martin-Mawien/alx-project-nexus-.git
 cd alx-project-nexus
 cp .env,example .env
 docker-compose up --build
