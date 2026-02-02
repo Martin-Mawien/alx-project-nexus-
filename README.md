@@ -125,15 +125,27 @@ The **Job Board Backend API** is a scalable, production-ready Django REST Framew
 
 ```mermaid
 erDiagram
- /* ============================================================
-   ROLE TABLE
-   ============================================================ */
+   ROLE {
+   int id PK
+   string name
+   string description
+   timestamp created_at
+}
+```
+----
+
+## PostgreSQL Schema
+
+```sql
 CREATE TABLE role (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     description TEXT,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    CONSTRAINT role_name_check CHECK (name IN ('admin', 'employer', 'job_seeker'))
+    created_at TIMESTAMPTZ NOT NULL
+DEFAULT NOW(),
+    CONSTRAINT role_name_check
+        CHECK (name IN ('admin',
+'employer', 'job_seeker'))
 );
 
 /* ============================================================
@@ -247,7 +259,6 @@ VALUES
 ON CONFLICT (name) DO NOTHING;
 
 ```
-
 ---
 
 ## 📂 API Endpoints
