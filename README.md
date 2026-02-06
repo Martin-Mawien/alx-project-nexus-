@@ -1,9 +1,12 @@
 ### alx-project-nexus
 > A production-ready RESTful API backend designed to manage job postings, categories, applications, and user roles with enterprise-grade authentication and real-time search.
+
 Built on Django REST Framework and PostgreSQL, it delivers secure role‑based access, optimized query performance, and comprehensive Swagger/OpenAPI documentation for sealess integration.
 ----
+Built on Django REST Framework and PostgreSQL, it delivers secure role‑based access, optimized queries performance, and comprehensive Swagger/OpenAPI documentation for sealess integration.
+----
 
-![Build Status](https://img.shields.io/badge/github/actions/workflow/status/Martin-Mawien/alx-project-nexus-/ci.yml?branch=main)
+![Build Status](https://img.shields.io/github/actions/workflow/status/Martin-Mawien/alx-project-nexus-/ci.yml?branch=main)
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Django Version](https://img.shields.io/badge/django-4.2.26-green)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -27,10 +30,36 @@ Built on Django REST Framework and PostgreSQL, it delivers secure role‑based a
 - [License](#-license)
 
 ---
-
 ## 🎯 Overview
+---
+## ALX Project Nexus
+A production-ready RESTful API backend designed to manage job postings, categories, applications, and user roles with enterprise-grade authentication and real-time search.
+Built on Django REST Framework and PostgreSQL, it delivers secure role‑based access, optimized queries performance, and comprehensive Swagger/OpenAPI documentation for sealess integration.
 
-The **Job Board Backend API** is a scalable, production-ready Django REST Framework application designed for managing job postings, categories, and applications. It implements role-based access control (RBAC), JWT authentication, and optimized database queries to support high-traffic job portals.
+## ✨ Festures
+- Role - baased authentication (JWT in production)
+- Job postings with category classification
+- Applications with resume upload and workflow status
+- Real - time search and filtering
+- Swagger/OpenAPI documentation
+- CI/CD pipeline with Github Actions
+- Dockerized deployment with PostgreSQL
+
+## Tech Stack
+- **Backend:** Django REST framework
+- **Database:** PostgreSQL
+- **Auth:** JWT (production), session (develiopment)
+- **Deployment:** Docker, Gunicorn, Render
+- **CI/CD:** Github Actions
+- **Docs:** Swagger, Redoc, Postman
+
+## SETUP
+```bash
+git clone https://github.com/Martin-Mawien/alx-project-nexus-.git
+cd alx-project-nexus
+cp .env,example .env
+docker-compose up --build
+```
 
 ### Key Highlights
 
@@ -41,10 +70,7 @@ The **Job Board Backend API** is a scalable, production-ready Django REST Framew
 - ✅ **Production Ready** - Docker containerization, CI/CD pipeline, and cloud deployment
 - ✅ **API Documentation** - Interactive Swagger/OpenAPI documentation
 
----
-
 ## ✨ Features
-
 ### Core Functionality
 
 - **Job Management**
@@ -78,10 +104,7 @@ The **Job Board Backend API** is a scalable, production-ready Django REST Framew
 - **CORS Support** - Configured for frontend integration
 - **Caching** - Redis caching for frequently accessed data
 
----
-
 ## 🛠️ Technologies
-
 ### Backend Framework
 - **Django 4.2.26** - High-level Python web framework with security patches
 - **Django REST Framework 3.14+** - Powerful toolkit for building Web APIs
