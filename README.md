@@ -1,5 +1,8 @@
 ### alx-project-nexus
 > A production-ready RESTful API backend designed to manage job postings, categories, applications, and user roles with enterprise-grade authentication and real-time search.
+
+Built on Django REST Framework and PostgreSQL, it delivers secure role‑based access, optimized query performance, and comprehensive Swagger/OpenAPI documentation for sealess integration.
+----
 Built on Django REST Framework and PostgreSQL, it delivers secure role‑based access, optimized queries performance, and comprehensive Swagger/OpenAPI documentation for sealess integration.
 ----
 
