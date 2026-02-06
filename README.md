@@ -3,9 +3,6 @@
 Built on Django REST Framework and PostgreSQL, it delivers secure role‑based access, optimized query performance, and comprehensive Swagger/OpenAPI documentation for sealess integration.
 ----
 
-> A production-ready RESTful API for managing job postings, applications, and user roles with enterprise-grade authentication and real-time search capabilities.
-----
-
 ![Build Status](https://img.shields.io/badge/github/actions/workflow/status/Martin-Mawien/alx-project-nexus-/ci.yml?branch=main)
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Django Version](https://img.shields.io/badge/django-4.2.26-green)
