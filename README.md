@@ -519,7 +519,7 @@ DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 
 # Database
-DATABASE_URL=postgresql://username:password@localhost:5432/jobboard_db
+DATABASE_URL=postgresql://username:password@localhost:5432/fursa_db
 
 # JWT Settings
 JWT_ACCESS_TOKEN_LIFETIME=60  # minutes
