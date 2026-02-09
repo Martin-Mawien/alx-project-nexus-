@@ -571,7 +571,7 @@ python manage.py collectstatic --noinput
 python manage.py runserver
 ```
 
-The API will be available at `http://localhost:8000/`
+The API will be available at `http://localhost127.0.0.1:8000/`
 
 8. **Access API Documentation**
 
